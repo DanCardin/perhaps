@@ -1,0 +1,19 @@
+[package]
+name = "perhaps"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+git2 = "0.13"
+toml_edit = "0.2.1"
+fnmatch-regex = "0.1.0"
+regex = "1.5.4"
+clap = { version = "3.1.0", features = ["derive"] }
+topological-sort = "0.1.0"
+glob = "0.3.0"
+ansi_term = "0.12.1"
+spinners-rs = "1.2.3"
+lazy_static = "1.4.0"
+
+crossterm = "0.17"
+tui = { version = "0.12", default-features = false, features = ['crossterm'] }

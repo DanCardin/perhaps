@@ -1,0 +1,23 @@
+[check]
+requires = ['git:src/*', 'git:tests/*', 'git:Cargo.toml']
+body = """
+cargo check
+"""
+
+[test]
+requires = ['check']
+body = """
+cargo test
+"""
+
+[build]
+requires = ['test']
+body = """
+cargo build --release
+"""
+
+[docker-build]
+requires = ['git:Dockerfile', 'build']
+body = """
+docker build .
+"""

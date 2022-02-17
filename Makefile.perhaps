@@ -1,0 +1,43 @@
+check: git:src/* git:tests/* Cargo.toml
+	cargo check
+
+test: check
+	cargo test
+
+build: test
+	cargo build --release
+
+docker-build: git:Dockerfile build
+	docker build .
+
+
+
+# ----->
+#
+# .perhaps/git\:src\*:
+# 	if [ git diff --name-only | grep src/* ]; then
+# 		touch .perhaps/src-changed
+# 		echo src-changed
+# 	end
+
+# .perhaps/test: .perhaps/git\:src/\*
+# 	cargo check
+
+# 	echo check
+# 	touch .perhaps/check
+
+# .perhaps/test: .perhaps/check
+# 	cargo test
+
+# 	echo test
+# 	touch .perhaps/test
+
+# .perhaps/build: .perhaps/test
+# 	cargo build
+
+# 	echo build
+# 	touch .perhaps/build
+
+# .perhaps/docker-build: .perhaps/build
+# 	touch .perhaps/docker-build
+# 	echo docker-build
